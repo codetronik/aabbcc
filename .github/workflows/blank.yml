@@ -31,8 +31,13 @@ jobs:
     - name: Run SonarCloud analysis
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew sonar -Dsonar.projectKey=codetronik_aabbcc -Dsonar.organization=codetronik -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_TOKEN}
-
+      run: |
+        ./gradlew sonar \
+          -Dsonar.projectKey=codetronik_aabbcc \
+          -Dsonar.organization=codetronik \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${SONAR_TOKEN}
+          
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
